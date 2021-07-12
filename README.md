@@ -16,11 +16,11 @@ The objective of developing monitoring systems is to reduce health care costs by
 Each of our bodies utilises temperature and also pulse acknowledging to peruse understanding wellbeing. The sensors are linked to a microcontroller to track the status which is thus interfaced to a LCD screen and additionally remote association with the capacity to alert the concerned. <br/>
 If framework finds any sudden changes in understanding heart beat or body temperature, the framework can consequently alarms the client about the patients status over IOT and furthermore indicates subtle elements of pulse and temperature of patient live on the web. <br/>
 
-![1]()
+![1](https://github.com/thatbeautifuldream/health-care/blob/main/figures/1.png)
 
 ## Fig. : IoT Based Patient Health Monitoring System using ESP8266 & Anduino
 
-![2]()
+![2](https://github.com/thatbeautifuldream/health-care/blob/main/figures/2.png)
 
 ## Fig. : Basic Sensor Monitoring
 
@@ -36,13 +36,13 @@ Displaying measured pulse rate and temperature on character LCD & hosted IoT pla
 
 The body temperature sensor, pulse rate sensor, room temperature and humidity sensor values are calibrated using the microcontroller and displayed on the LED board.
 
-![3]()
+![3](https://github.com/thatbeautifuldream/health-care/blob/main/figures/3.png)
 
 ## Fig. : Working Prototype
 
 These sensor values are then sent to the database server. These data can be accessed from cloud by the authorised users using the IoT application platform. The sensor values of the patient is displayed in the application as shown in Fig.
 
-![4]()
+![4](https://github.com/thatbeautifuldream/health-care/blob/main/figures/4.png)
 
 ## Fig. : ThinkSpeak IoT Portal’s Widget Panel
 
