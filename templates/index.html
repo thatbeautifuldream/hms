@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Heart Disease Prediction Model</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="age" placeholder="Age" required="required" />
+        <input type="text" name="sex" placeholder="Sex" required="required" />
+		<input type="text" name="cp" placeholder="CP" required="required" />
+    <input type="text" name="trestbp" placeholder="TrestBP" required="required" />
+    <input type="text" name="chol" placeholder="Chol" required="required" />
+    <input type="text" name="fbs" placeholder="FBS" required="required" />
+    <input type="text" name="restecg" placeholder="RestECG" required="required" />
+    <input type="tex6
+    t" name="thalach" placeholder="Thalach" required="required" />
+    <input type="text" name="exang" placeholder="Exang" required="required" />
+    <input type="text" name="oldpeak" placeholder="OldPeak" required="required" />
+    <input type="text" name="slope" placeholder="Slope" required="required" />
+    <input type="text" name="ca" placeholder="CA" required="required" />
+    <input type="text" name="thal" placeholder="Thal" required="required" />
+    <input type="text" name="AHD" placeholder="AHD" required="required" />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
