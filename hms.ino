@@ -36,7 +36,7 @@ DFRobot_MAX30102 particleSensor;
 int ecgsensor=34; 
 BlynkTimer timer; 
 
-char auth[] = " __7Gs_z34KE9PqEP1R39RWuKCjkD_T__";
+char auth[] = "YIClOcOdLPtRS-Q6UIlk3BCkXSyxJsmp";
 
 char ssid[] = "HMS";
 char pass[] = "123456789";
@@ -50,7 +50,7 @@ int8_t heartRateValid; //Flag to display if heart-rate calculation is valid
 
 void heartoxygen()
 {
-  Serial.println(F("Wait about four seconds"));
+    Serial.println(F("Wait about four seconds"));
   particleSensor.heartrateAndOxygenSaturation(/**SPO2=*/&SPO2, /**SPO2Valid=*/&SPO2Valid, /**heartRate=*/&heartRate, /**heartRateValid=*/&heartRateValid);
   //Print result 
   Serial.print(F("heartRate="));
@@ -68,7 +68,7 @@ void heartoxygen()
    Link = "https://www.google.com/maps/search/?api=1&query="+String(long_lat);
    SMS = "Heart Rate is abnormal "+ long_lat + " " + Link;//////////////////////////////SMS message
   
-  if(heartRateValid==1 && SPO2Valid == 1){
+if(heartRateValid==1 && SPO2Valid == 1){
 
   String HR = "HeartRate: "+String(int32_t(heartRate))+" SPO2: "+String(int32_t(SPO2));
   String HR1 = "R:"+String(int32_t(heartRate))+" O:"+String(int32_t(SPO2))+"  ";
@@ -78,13 +78,15 @@ void heartoxygen()
   
 if(heartRate<50)///////////////Change the range heartRate<(*yourValue) to set the abnormal value
 {
-  get_location(SMS);
-    Blynk.notify("Heart Rate is abnormal");
+   
+
+   get_location(SMS);
+  Blynk.notify("Heart Rate is abnormal");
   }
   else 
   {
-    Blynk.notify("Heart Rate is normal");
-  }
+
+    }
 }
   
 }
@@ -133,15 +135,15 @@ int get_location(String message){
   
 }
 
-void bp(){
-  int bpRval = analogRead(bppin);
-  int bpval = (bpRval * 5.0) / 1024.0;
-  Serial.print(bpval);
-  Blynk.virtualWrite(V4,bpval);
-  lcd.setCursor(0,1);
-  lcd.print("P:");
-  lcd.print(bpval);
-}
+//void bp(){
+//  int bpRval = analogRead(bppin);
+//  int bpval = (bpRval * 5.0) / 1024.0;
+//  Serial.print(bpval);
+//  Blynk.virtualWrite(V4,bpval);
+//  lcd.setCursor(0,1);
+//  lcd.print("P:");
+//  lcd.print(bpval);
+//}
 
 
 void GPS()
@@ -149,20 +151,24 @@ void GPS()
 if (gps.charsProcessed() < 10)
   {
     //Serial.println("No GPS detected: check wiring.");
-    //Blynk.virtualWrite(V4, "GPS ERROR");         // Value Display widget  on V4 if GPS not detected
+     // Blynk.virtualWrite(V4, "GPS ERROR");         // Value Display widget  on V4 if GPS not detected
   }
 }
 void displaygpsInfo()
 { 
+
   if (gps.location.isValid() ) 
-  {  
-    latitude = (gps.location.lat());      //Storing the Lat. and Lon. 
-    longitude = (gps.location.lng());     //Storing the Lat. and Lon.
+  {
+    
+     latitude = (gps.location.lat());      //Storing the Lat. and Lon. 
+     longitude = (gps.location.lng()); 
+    
     Serial.print("LAT:  ");
-    Serial.println(latitude, 6);          // float to x decimal places
+    Serial.println(latitude, 6);                // float to x decimal places
     Serial.print("LONG: ");
-    Serial.println(longitude, 6);          
-  }
+    Serial.println(longitude, 6); 
+           
+      }
 }
 
 void locate()
@@ -180,6 +186,7 @@ void setup()
 {
   //Init serial
   Serial.begin(115200); 
+  
   SIM900.begin(9600); 
   Blynk.begin(auth, ssid, pass);
   lcd.init();
@@ -190,15 +197,16 @@ void setup()
   lcd.print("MONITORING");
   delay(1000);
   lcd.clear();
-  while (!particleSensor.begin()) {
+
+    while (!particleSensor.begin()) {
     Serial.println("MAX30102 was not found");
     delay(1000);
-  }
+    }
 
   dht.begin();
   pinMode(ecgsensor,INPUT);
 
-  particleSensor.sensorConfiguration(/*ledBrightness=*/50, /*sampleAverage=*/SAMPLEAVG_4, \
+    particleSensor.sensorConfiguration(/*ledBrightness=*/50, /*sampleAverage=*/SAMPLEAVG_4, \
                         /*ledMode=*/MODE_MULTILED, /*sampleRate=*/SAMPLERATE_100, \
                         /*pulseWidth=*/PULSEWIDTH_411, /*adcRange=*/ADCRANGE_16384);
 //timer.setInterval(1000L, heartoxygen); 
@@ -211,7 +219,7 @@ void loop()
 Blynk.run();
 locate();
 timer.run();
-bp();
+//bp();
 temp();
 heartoxygen();
 ecg();
