@@ -142,7 +142,7 @@ if (gps.charsProcessed() < 10)
 }
 void displaygpsInfo()
 { 
-  if (gps.location.isValid() ) 
+  if (gps.location.isValid()) 
   {  
      latitude = (gps.location.lat());      //Storing the Lat. and Lon. 
      longitude = (gps.location.lng()); 
